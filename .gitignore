@@ -1,0 +1,10 @@
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+.DS_Store
+
+# Synced project context is reference material, not website source.
+sources/
+AGENTS.md

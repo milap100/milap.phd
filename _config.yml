@@ -1,0 +1,11 @@
+title: Milap Rajgor
+description: Mathematics · Biological Structure · Research
+url: "https://milap.phd"
+baseurl: ""
+lang: en
+permalink: pretty
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+exclude: [AGENTS.md, README.md, Gemfile, Gemfile.lock]
+

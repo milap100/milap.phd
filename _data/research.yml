@@ -1,0 +1,13 @@
+- number: "01"
+  title: Topology & geometry
+  summary: Topological and geometric viewpoints for studying shape, structure, organization, and change in complex systems.
+- number: "02"
+  title: Biological structure
+  summary: Mathematical questions motivated by biomolecular and protein structure, including relationships between structure and dynamics.
+- number: "03"
+  title: Scientific computing
+  summary: Reproducible computational methods that connect mathematical ideas with simulation data and scientific evidence.
+- number: "04"
+  title: Research synthesis
+  summary: Work across disciplinary boundaries, with an emphasis on precise claims, interpretable methods, and clear communication.
+
