@@ -3,71 +3,43 @@ title:
 description: Milap Rajgor is a mathematics PhD researcher working across topology, scientific computing, and biological structure.
 body_class: home
 ---
-<section class="dossier-hero shell" aria-labelledby="hero-title">
-  <div class="hero-meta">
-    <p><span>Field notes</span> Mathematics × Biological structure</p>
-    <p>Topology · Geometry · Dynamics <span aria-hidden="true">↘</span></p>
-  </div>
-
-  <div class="hero-main">
-    <div class="hero-copy">
-      <p class="eyebrow">{{ site.data.profile.role }}</p>
-      <h1 id="hero-title">Milap<br><span>Rajgor</span></h1>
-      <p class="hero-dek">Mathematics for understanding <strong>structure, dynamics, and biological systems.</strong></p>
-      <div class="actions">
-        <a class="button" href="{{ '/research/' | relative_url }}">View research <span>↗</span></a>
-        <a class="text-link" href="{{ '/about/' | relative_url }}">Profile & approach</a>
-      </div>
+<section class="cinematic-hero" aria-labelledby="hero-title">
+  <img class="hero-image" src="{{ '/assets/images/molecular-hero.png' | relative_url }}" alt="Translucent biomolecular form illuminated against a deep blue background">
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="shell hero-content">
+    <p class="eyebrow">Mathematics · Biological structure · Research</p>
+    <h1 id="hero-title">Mathematical structure in complex biological systems.</h1>
+    <p class="hero-dek">Research across topology, geometry, scientific computing, and protein structure.</p>
+    <div class="actions">
+      <a class="button" href="{{ '/research/' | relative_url }}">Explore research <span aria-hidden="true">↗</span></a>
+      <a class="quiet-link" href="{{ '/about/' | relative_url }}">About the work</a>
     </div>
-
-    <aside class="research-card" aria-label="Research coordinates">
-      <div class="card-mark" aria-hidden="true"><span>M</span><span>R</span></div>
-      <p class="eyebrow">Research coordinates</p>
-      <ol>
-        <li><span>01</span><strong>Topological methods</strong><small>Shape, organization, change</small></li>
-        <li><span>02</span><strong>Biological structure</strong><small>Proteins and biomolecular systems</small></li>
-        <li><span>03</span><strong>Scientific computing</strong><small>Reproducible computational evidence</small></li>
-      </ol>
-    </aside>
   </div>
-
-  <div class="hero-strip" aria-label="Research summary">
-    <p><small>Mode</small> PhD research</p>
-    <p><small>Interface</small> Mathematics ↔ Biology</p>
-    <p><small>Method</small> Theory + computation</p>
-    <p><small>Site</small> milap.phd</p>
+  <div class="shell hero-notes" aria-label="Research areas">
+    <span>Topology</span><span>Scientific computing</span><span>Biological structure</span>
   </div>
 </section>
 
-<section class="focus shell" aria-labelledby="focus-title">
-  <div class="section-intro">
-    <p class="index">01 / Focus</p>
-    <div><h2 id="focus-title">A research practice built around structure.</h2><p>{{ site.data.profile.introduction }}</p></div>
-  </div>
-  <div class="focus-grid">{% for item in site.data.research %}<article><div><span>{{ item.number }}</span><i aria-hidden="true"></i></div><h3>{{ item.title }}</h3><p>{{ item.summary }}</p><a href="{{ '/research/' | relative_url }}">Read theme <span>↗</span></a></article>{% endfor %}</div>
-</section>
-
-<section class="program" aria-labelledby="program-title"><div class="shell">
-  <div class="program-head"><p class="index">02 / Research program</p><p>Topology · Geometry · Computation</p></div>
-  <div class="program-statement">
-    <h2 id="program-title">How can mathematical structure clarify the behavior of complex biological systems?</h2>
-    <div><p>I work between abstraction and evidence—using topological and geometric ideas alongside scientific computing to ask precise questions about structure and change.</p><a class="button button-light" href="{{ '/research/' | relative_url }}">Research overview <span>→</span></a></div>
-  </div>
-  <div class="program-axis"><span>Abstract structure</span><i></i><b>↔</b><i></i><span>Scientific evidence</span></div>
-</div></section>
-
-<section class="practice shell" aria-labelledby="practice-title">
-  <div class="section-intro"><p class="index">03 / Practice</p><div><h2 id="practice-title">Careful claims. Inspectable methods.</h2><p>My approach emphasizes precision, reproducibility, and meaningful connections between mathematical ideas and scientific questions.</p></div></div>
-  <div class="practice-list">
-    <article><span>A</span><h3>Precision</h3><p>State what a method measures, what a result supports, and where uncertainty remains.</p></article>
-    <article><span>B</span><h3>Reproducibility</h3><p>Build computational work that can be inspected, repeated, and extended.</p></article>
-    <article><span>C</span><h3>Connection</h3><p>Use mathematical structure to create productive links across disciplines.</p></article>
+<section class="home-intro shell" aria-labelledby="intro-title">
+  <p class="section-label">Research approach</p>
+  <div>
+    <h2 id="intro-title">Mathematics as a way to examine structure and change.</h2>
+    <p>{{ site.data.profile.introduction }}</p>
+    <a class="inline-link" href="{{ '/research/' | relative_url }}">Research overview <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
-<section class="record shell" aria-labelledby="record-title">
-  <div><p class="index">04 / Record</p><h2 id="record-title">Work in progress,<br>documented clearly.</h2></div>
-  <div><p>This site is the evolving public record of my research, publications, teaching, and academic materials. Entries are added only when their details are ready to verify.</p><nav><a href="{{ '/publications/' | relative_url }}">Publications <span>↗</span></a><a href="{{ '/teaching/' | relative_url }}">Teaching <span>↗</span></a><a href="{{ '/cv/' | relative_url }}">Curriculum vitae <span>↗</span></a></nav></div>
+<section class="themes shell" aria-labelledby="themes-title">
+  <header><p class="section-label">Areas of inquiry</p><h2 id="themes-title">Current research themes</h2></header>
+  <div class="theme-grid">
+    {% for item in site.data.research %}
+    <article><span>{{ item.number }}</span><h3>{{ item.title | escape }}</h3><p>{{ item.summary }}</p></article>
+    {% endfor %}
+  </div>
 </section>
 
-<section class="closing shell"><div><p class="eyebrow">Research & academic contact</p><h2>Start a thoughtful<br>conversation.</h2></div><a class="round-link" href="{{ '/contact/' | relative_url }}"><span>Contact</span><b>↗</b></a></section>
+<section class="home-links shell" aria-label="Academic information">
+  <a href="{{ '/publications/' | relative_url }}"><span>Publications</span><small>Scholarly record</small><b aria-hidden="true">↗</b></a>
+  <a href="{{ '/teaching/' | relative_url }}"><span>Teaching</span><small>Courses and activities</small><b aria-hidden="true">↗</b></a>
+  <a href="{{ '/cv/' | relative_url }}"><span>Curriculum vitae</span><small>Academic record</small><b aria-hidden="true">↗</b></a>
+</section>
