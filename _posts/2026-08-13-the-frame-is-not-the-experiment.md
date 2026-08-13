@@ -1,71 +1,71 @@
 ---
 layout: article
-title: "The Frame Is Not the Experiment"
-description: "A molecular-dynamics trajectory may contain millions of frames, but time correlation means that sample size is a scientific question—not a row count."
+title: "Same Temperature Is Not the Same Experiment"
+description: "Why comparing protein mutants at one absolute temperature can hide the very stability difference we want to measure—and how a temperature-aware topological test can expose it."
 date: 2026-08-13 00:45:00 -0400
 topics:
   - Molecular dynamics
-  - Statistical reasoning
-  - Reproducibility
+  - Thermal stability
+  - Topological data analysis
 ---
 
-A molecular-dynamics trajectory can be enormous and still contain surprisingly few independent pieces of evidence.
+In molecular dynamics, “same temperature” sounds like a fair comparison. Every protein receives the same thermostat setting, the same simulation length, and the same analysis. What could be more controlled?
 
-The reason is simple: neighboring frames are related by dynamics. A structure saved at time `t + 1` is not a fresh draw from nature; it is the immediate continuation of the structure at time `t`. Saving coordinates more frequently creates a smoother record, but it does not automatically create more independent experiments.
+For questions about melting, that symmetry can be misleading.
 
-This distinction becomes especially important when a trajectory is converted into a time series of structural or topological measurements. Ten thousand values may look like a large dataset. If they come from one transition event, however, they may still describe only one event.
+Two proteins at 300 K may occupy very different positions on their thermal landscapes. A stabilizing mutation can move the unfolding transition upward; a destabilizing mutation can move it downward. Equal absolute temperature does not therefore imply equal proximity to failure.
 
-## Why row counts are misleading
+## A concrete example from T4 lysozyme
 
-Suppose a protein remains folded for a long interval, crosses a barrier once, and then remains unfolded. A frame-by-frame comparison could contain thousands of folded observations and thousands of unfolded observations. A conventional statistical test might report an extremely small uncertainty because it treats every row as independent.
+T4 lysozyme provides an unusually clear test. Wild type melts at 66.48 °C. The S117V mutation raises the melting temperature by 5.1 °C and increases stability by about 2.0 kcal/mol. G30F lowers the melting temperature by 4.9 °C and decreases stability by about 1.5 kcal/mol ([Shoichet et al., PNAS, 1995](https://doi.org/10.1073/pnas.92.2.452)).
 
-But the scientific replication is not the number of saved frames. The central event—the transition—occurred once.
+We simulated all three variants at 300 K, equivalent to 26.85 °C. At that temperature, S117V was 44.73 °C below its melting point, wild type was 39.63 °C below, and G30F was 34.73 °C below.
 
-This is a form of pseudoreplication: repeated measurements of the same evolving system are mistaken for independent repetitions of the phenomenon. The problem cannot be solved merely by collecting frames at a finer interval. In fact, denser saving can make the apparent sample size grow while the underlying information changes very little.
+The thermostat was identical. The thermal challenge was not.
 
-Time correlation is not a defect in molecular dynamics. It is part of the phenomenon we are trying to study. The mistake is to forget it when making claims.
+And because even G30F remained nearly 35 °C below its melting temperature, all three systems were being observed in a comparatively mild regime. A 100 ns trajectory there can characterize native-state fluctuations, but it is not a thermal-denaturation experiment.
 
-## Windows overlap, too
+## Why the topology did not reproduce the melting order
 
-Temporal descriptors make the dependence even more explicit. A sliding-window calculation might summarize frames 1–100, then 2–101, then 3–102. Those two neighboring windows share 99 percent of their coordinates. Their outputs should be expected to resemble one another.
+Our analysis follows H1 loop-like organization across time using Zigzag persistent homology. The resulting lifetime summary asks how long topological structures remain identifiable as the molecular geometry changes.
 
-This applies to RMSD histories, contact histories, and topological summaries such as an H1 Zigzag-persistence lifetime. A smooth curve can be scientifically useful—it can reveal when organization changes—but its smoothness is not evidence that every point is an independent confirmation.
+At 300 K, the measured order was not the experimental stability order. That result is scientifically important because it prevents a category error: **native-state topological persistence is not automatically equivalent to thermodynamic stability.**
 
-The correct unit of evidence depends on the claim. If the question concerns folding transitions, independent transition events or independent trajectories may be the relevant units. If the question concerns transfer across proteins, the protein—not the frame—may be the important unit. A method that succeeds on many windows from one molecule has not necessarily shown that it generalizes to another molecule.
+A protein can have a higher melting temperature without displaying a larger value of every dynamical observable far below that temperature. Stability is a property of a free-energy landscape and a transition between ensembles. A short trajectory deep in one basin samples only a small portion of that landscape.
 
-## Prediction can leak through time
+This is especially important for new descriptors. If every scalar that changes in a trajectory is immediately called a “stability metric,” the language becomes stronger than the evidence. Topological persistence earns a physical interpretation only through a test designed around the physical transition in question.
 
-Temporal dependence also makes validation deceptively difficult. Randomly dividing frames into training and test sets can place nearly identical neighboring structures on opposite sides of the split. A model or threshold may then appear to predict unseen data while actually recognizing the local neighborhood of data it has already seen.
+## A temperature-aware test
 
-The same risk exists without machine learning. If a distance cutoff, window length, or normalization is chosen after inspecting the full trajectory, the eventual test interval has already influenced the method.
+The stronger experiment is not complicated in principle.
 
-A stronger design keeps whole temporal blocks, transition events, trajectories, or proteins separate. The analysis protocol is fixed on one group and evaluated on another. The separation should follow the level at which the final claim is made.
+First, freeze the topological protocol: C-alpha representation, distance scale, H1 construction, sampling interval, window length, normalization, and statistics. No parameter should be adjusted to improve the final ordering.
 
-## A more honest hierarchy of evidence
+Second, simulate independent replicas across a temperature ladder for every variant. The ladder should cover the stable native regime and extend toward the experimentally known melting region.
 
-For the kinds of topological questions I study, I find it useful to distinguish four levels:
+Third, compare the variants in two complementary ways:
 
-1. **Frames** show the instantaneous structural record.
-2. **Windows** describe local temporal organization.
-3. **Events or trajectories** provide repeated dynamical tests.
-4. **Proteins or experimental systems** test whether an interpretation transfers.
+1. At the same absolute temperatures, ask when each protein begins to show persistent structural reorganization.
+2. At matched distance from its own melting point, ask whether the topological dynamics become comparable across variants.
 
-Each level can answer a different question. Confusion begins when evidence from one level is used to support a claim at another.
+Finally, benchmark the topological signal against established structural observables. The valuable question is not whether topology can be forced to agree with melting temperature, but whether it detects a reproducible temporal reorganization that standard summaries miss or localize less clearly.
 
-For example, a topological quantity may track unfolding within one heating trajectory. That is evidence of association in that trajectory. It is not yet evidence that the quantity predicts thermodynamic stability across proteins, ranks mutations, or detects transitions prospectively. Those claims require their own independent units and controls.
+## The prediction that can fail
 
-## What a careful analysis looks like
+A convincing research program needs a prediction that nature can reject.
 
-A defensible workflow does not discard frames. It uses them while assigning uncertainty at the appropriate level.
+For these T4 lysozyme variants, the expected order of transition temperatures is G30F, wild type, then S117V. If topological persistence is genuinely sensitive to thermally driven loss of molecular organization, its transition should follow that same temperature order under the frozen protocol.
 
-Independent trajectories should be retained as independent trajectories. Transition events should be identified without consulting the signal being evaluated. Comparisons can then be summarized per event and resampled at the event or trajectory level. Temporal shifts or block permutations can serve as negative controls while preserving some of the data's correlation structure.
+If the signal changes at unrelated temperatures, disappears across replicas, or adds nothing beyond conventional measures, then it should not be presented as a stability marker. If the transition shifts reproducibly with the experimental melting point, we gain evidence for a narrower and more defensible claim: temporal topology can report how molecular organization changes as a protein approaches thermal destabilization.
 
-Most importantly, the protocol should be frozen before the decisive test: atom selection, distance scale, sampling interval, window length, homology dimension, normalization, and statistical comparison. Otherwise the abundance of correlated observations creates many opportunities to find a pattern that will not survive transfer.
+That is more interesting than claiming one number predicts stability everywhere. It connects topology to a mechanism, specifies the regime in which the claim applies, and tells us exactly how to prove it wrong.
 
-## The useful question
+## Negative results are maps
 
-The size of a simulation file is a computational fact. The amount of independent evidence in it is a scientific judgment.
+The 300 K study did not produce the ranking we initially wanted. It produced something more valuable than a convenient confirmation: it identified the boundary of the claim.
 
-That judgment should be visible in the analysis. When a trajectory produces a compelling curve, I want to know not only how many points are on it, but how many independent events support the interpretation, how the temporal split was made, and whether the same protocol worked on an untouched system.
+At low temperature, the trajectories describe fluctuations inside the folded basin. Near the melting region, they can test resistance to thermal reorganization. Those are different scientific questions, and they should not be answered with the same interpretation.
 
-The frame is an observation. The trajectory is a history. The experiment is the test we design from them—and those three things should not be counted as if they were the same.
+The lesson is simple: temperature is not merely a simulation setting. It is part of the hypothesis.
+
+Once that is recognized, the failed ranking stops looking like a dead end. It becomes the design principle for the experiment that can genuinely test the research.

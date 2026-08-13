@@ -1,74 +1,72 @@
 ---
 layout: article
-title: "When a Topological Signal Does Not Transfer"
-description: "A failed stability-ordering test is not the end of a method. It is a boundary marker that tells us which scientific claim the evidence cannot support."
+title: "When a Negative Result Reveals the Real Experiment"
+description: "A T4 lysozyme mutation test did not reproduce the experimental stability order at 300 K. That result exposes the variable the next experiment must control: distance from the melting transition."
 date: 2026-08-13 00:30:00 -0400
 topics:
-  - Negative results
-  - Topological data analysis
-  - Scientific validation
+  - Protein stability
+  - Molecular dynamics
+  - Zigzag persistence
 ---
 
-A signal can be real, reproducible, and still fail to mean what we first hoped it meant.
+The most useful result in research is sometimes the one that refuses to support the simple story.
 
-That is one of the most useful lessons in computational research. A quantity may respond clearly when a protein is heated or structurally disrupted, yet fail to rank mutations by experimental stability. The first observation does not guarantee the second, because the two tests ask different scientific questions.
+We tested whether a topological lifetime extracted from molecular-dynamics trajectories would reproduce the known stability order of three T4 lysozyme variants: wild type, the strongly stabilizing mutation S117V, and the destabilizing mutation G30F. It did not.
 
-In my work with temporal topology, this distinction has become a guide rather than a disappointment.
+That is not the end of the idea. It is the moment the scientific question becomes sharper.
 
-## Association is not identity
+## What the simulations actually tested
 
-Consider a summary derived from H1 Zigzag-persistence intervals. Longer-lived intervals may indicate that loop-like relationships in a changing contact geometry remain identifiable across more of a trajectory. If the summary decreases as a protein loses organized structure, it is tempting to call it a stability measure.
+The campaign was substantial: three independent 100 ns replicas for each of three systems, giving nine trajectories and 900 ns of explicit-solvent simulation. Every system was simulated at 300 K, or 26.85 °C, and analyzed with the same frozen H1 Zigzag-persistence protocol.
 
-But “tracks structural disruption” and “measures thermodynamic stability” are not equivalent statements.
+The mean topological lifetime, `tau_top`, was 0.0854 for wild type, 0.0738 for S117V, and 0.0860 for G30F. In other words, the 300 K result did not rank the variants by experimental thermal stability.
 
-The topological quantity is defined by a particular representation: atom selection, distance cutoff, frame spacing, window length, homology dimension, and normalization. Experimental melting temperatures or free-energy changes arise from thermodynamic measurements with their own conditions and meanings. Correlation in one setting does not make these objects interchangeable.
+It is tempting to call that a failed validation. But first we have to ask a more basic question: **Was the simulation performed in the physical regime where the experimental distinction becomes visible?**
 
-The scientific task is therefore to test the proposed interpretation where it has a real chance to fail.
+## The missing variable was thermal distance
 
-## A matched test changes the question
+The experimental wild-type melting temperature is 66.48 °C. S117V raises it by 5.1 °C, while G30F lowers it by 4.9 °C. Those values place the transitions near 71.58 °C for S117V, 66.48 °C for wild type, and 61.58 °C for G30F. These measurements were reported in the original T4 lysozyme study by Shoichet and colleagues ([PNAS, 1995](https://doi.org/10.1073/pnas.92.2.452)).
 
-A mutation benchmark is valuable because it removes some of the easy explanations. Wild type and mutant can be simulated with the same force field, temperature, trajectory length, preprocessing, and topological protocol. If the topological summary truly reflects the experimental stability ordering, the ordering should emerge without adjusting the method after seeing the answer.
+At the simulated temperature of 26.85 °C, the three systems were therefore:
 
-In a matched T4 lysozyme test from my current research program, it did not.
+| Variant | Melting temperature | Distance above the 300 K simulation |
+|---|---:|---:|
+| S117V | 71.58 °C | 44.73 °C |
+| Wild type | 66.48 °C | 39.63 °C |
+| G30F | 61.58 °C | 34.73 °C |
 
-That negative result does not imply that the barcode calculation was broken or that temporal topology contains no structural information. It rules out a stronger interpretation: under that protocol and dataset, the scalar did not recover the experimental mutation-stability ordering.
+The simulation held absolute temperature constant, but it did **not** hold thermodynamic challenge constant. More importantly, all three trajectories were run far below their melting transitions. We asked a native-state simulation to reproduce a difference measured through thermal denaturation.
 
-This is exactly what a good benchmark is supposed to reveal.
+That is like testing three bridges in a light breeze and using their small vibrations to predict the order in which they will fail in a hurricane. The measurements in the breeze may be real and reproducible, but they do not apply the stress that separates the structures.
 
-## Why apparently reasonable signals fail
+## What the negative result rules out
 
-Several mechanisms can produce this kind of failure.
+The result matters because it rejects an overly easy claim: a topological lifetime measured during a 300 K, 100 ns trajectory is not automatically a direct proxy for melting temperature or mutation free energy.
 
-First, the signal may describe a different physical aspect of the system. Persistent topological organization along a finite trajectory can reflect kinetic coherence or structural rearrangement without encoding an equilibrium free-energy difference.
+That claim should be discarded.
 
-Second, the simulation may not sample the events needed to express the experimental contrast. A trajectory that remains near its starting basin cannot reveal every difference in folding thermodynamics, no matter how sophisticated the analysis is.
+But the broader research question remains open. Zigzag persistence was designed to follow topological structures as molecular contacts form and disappear through time. If thermal destabilization reorganizes those structures, the correct test is to observe the topology while the proteins approach comparable thermal regimes—not while all of them remain comfortably inside the folded basin.
 
-Third, a scalar summary deliberately compresses information. Two barcodes with different distributions of short and long intervals may produce similar aggregate values. Compression is useful only when the discarded distinctions are irrelevant to the claim.
+This distinction is central. **The method did not fail to detect an unfolding transition; the simulations did not contain one.**
 
-Finally, a protocol developed on one collection of proteins may absorb properties of that collection. A cutoff that looks effective in a development panel may not be the right scale for a mutation pair. Changing it after the mismatch appears would make the result easier to fit but harder to trust.
+## The decisive next experiment
 
-## The danger of rescuing the claim
+The next test should preserve the analysis protocol and change only the physical design. For each variant, simulations should span a temperature ladder from the native basin toward its experimentally measured transition. Comparisons can then be made at matched offsets below each melting temperature, or at matched reduced temperatures, rather than only at one absolute temperature.
 
-When a test fails, there are many available knobs: another distance scale, a different lifetime weighting, a new normalization, selected time windows, or a subset of trajectories. One of those choices may restore the expected ordering.
+The prediction is falsifiable:
 
-But unless the revision is motivated independently and tested on new data, it is not a rescue. It is a new hypothesis built with knowledge of the answer.
+- G30F should show sustained topological reorganization at a lower temperature than wild type.
+- S117V should resist that reorganization until a higher temperature.
+- The temperature at which H1 persistence changes should shift in the same direction as the experimental melting temperature.
 
-This is why a frozen protocol matters. It separates evaluation from exploration. Exploration is necessary—we learn by trying alternatives—but its output should be presented as a candidate for the next test, not as confirmation from the current one.
+The atom selection, distance cutoff, homology dimension, sampling interval, windowing, normalization, and statistical analysis must remain fixed before the new trajectories are examined. Conventional observables such as RMSD, native-contact fraction, secondary structure, and radius of gyration should be evaluated beside the topological signal.
 
-## What survives a negative result
+If the predicted shift does not appear under that design, the stability interpretation is unsupported. If it does, the result will be much stronger than a correlation obtained by tuning a metric after seeing the answer.
 
-A failed transfer test can leave several valuable conclusions intact.
+## Why this strengthens the research
 
-It can show that the computational pipeline runs consistently across matched systems. It can define the sensitivity of the result to sampling and parameter choices. It can expose a mismatch between a structural descriptor and a thermodynamic claim. And it can identify a narrower, more defensible question.
+Science is not defended by pretending every result is positive. It is defended by showing that a negative result changed the experiment in a precise, physically motivated, and testable way.
 
-For temporal topology, that narrower question may be whether a fixed descriptor tracks organization during independently labeled folding or unfolding events, or whether preceding topological history adds information after familiar structural histories are matched. These are mechanistic, falsifiable questions. They do not require calling the descriptor a surrogate for melting temperature or free-energy change.
+Our 300 K campaign established what `tau_top` does **not** mean. It also revealed the key comparison the next campaign must make: not simply protein against protein at the same thermostat setting, but topology against topology at a comparable distance from thermal transition.
 
-## Failure as a boundary marker
-
-The purpose of validation is not to decorate a method with successful examples. It is to discover the boundary of the claim.
-
-A positive result says, “the method survived this test.” A negative result says, “do not carry this interpretation across this boundary without new evidence.” Both statements make the research more precise.
-
-That precision is especially important when mathematical summaries are applied to biological systems. Elegant machinery can make a result feel explanatory before the physical connection has been demonstrated. The remedy is not less mathematical ambition. It is a sequence of harder tests, with enough transparency that an unfavorable answer can remain visible.
-
-I do not view the failed ordering as wasted work. It prevented a structural signal from being mislabeled as thermodynamic stability and redirected the project toward questions the data can actually adjudicate. That is progress: not the preservation of the original story, but the improvement of the scientific one.
+That is progress. The first experiment gave us a number. The negative result gave us the right question.
