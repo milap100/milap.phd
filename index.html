@@ -29,15 +29,6 @@ body_class: home
   </div>
 </section>
 
-<section class="themes shell" aria-labelledby="themes-title">
-  <header><p class="section-label">Areas of inquiry</p><h2 id="themes-title">Current research themes</h2></header>
-  <div class="theme-grid">
-    {% for item in site.data.research %}
-    <article><span>{{ item.number }}</span><h3>{{ item.title | escape }}</h3><p>{{ item.summary }}</p></article>
-    {% endfor %}
-  </div>
-</section>
-
 <section class="home-links shell" aria-label="Academic information">
   <a href="{{ '/publications/' | relative_url }}"><span>Publications</span><small>Scholarly record</small><b aria-hidden="true">↗</b></a>
   <a href="{{ '/teaching/' | relative_url }}"><span>Teaching</span><small>Courses and activities</small><b aria-hidden="true">↗</b></a>
