@@ -5,7 +5,7 @@
       <span>milap.phd</span><small>Mathematics PhD researcher</small>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      {% assign nav = "Research|/research/,TopoMol|/topomol/,Articles|/articles/,Publications|/publications/,Teaching|/teaching/,About|/about/,CV|/cv/,Contact|/contact/" | split: "," %}
+      {% assign nav = "Research|/research/,Articles|/articles/,Publications|/publications/,Teaching|/teaching/,About|/about/,CV|/cv/,Contact|/contact/" | split: "," %}
       {% for item in nav %}{% assign p = item | split: "|" %}<a href="{{ p[1] | relative_url }}"{% if page.url == p[1] %} aria-current="page"{% endif %}>{{ p[0] }}</a>{% endfor %}
     </nav>
   </div>
