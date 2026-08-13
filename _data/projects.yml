@@ -1,8 +1,5 @@
-# Delete the [] line, then add entries using the example below.
-[]
-# - title: "Project title"
-#   period: "2026–present"
-#   summary: "A concise, factual description of the research question."
-#   url: ""
-#   status: "Ongoing"
-
+- title: "TopoMol Workbench"
+  period: "Current"
+  summary: "A local-first computational workbench for exploring zigzag persistence, barcode summaries, and representative-residue views in molecular trajectories."
+  url: ""
+  status: "Ongoing"

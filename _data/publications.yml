@@ -1,10 +1,7 @@
-# Delete the [] line, then add entries using the example below.
-[]
-# - title: "Publication title"
-#   authors: "Author One, Milap Rajgor, Author Three"
-#   venue: "Journal or conference, year"
-#   status: "Published"
-#   url: "https://doi.org/..."
-#   pdf: "/assets/files/paper.pdf"
-#   note: "Optional one-sentence description."
-
+- title: "TopoMol Workbench: Zigzag persistence for molecular trajectories"
+  authors: "Milap Rajgor"
+  venue: "Work in progress"
+  status: "Work in progress"
+  url: ""
+  pdf: ""
+  note: "A local-first computational workbench for exploring zigzag persistence and structural summaries in molecular trajectories."
