@@ -3,3 +3,9 @@
   summary: "A local-first computational workbench for exploring zigzag persistence, barcode summaries, and representative-residue views in molecular trajectories."
   url: ""
   status: "Ongoing"
+
+- title: "Zigzag persistence in molecular dynamics"
+  period: "Current"
+  summary: "Mathematical and computational research on using zigzag persistence to study structural organization and change in molecular-dynamics trajectories."
+  url: ""
+  status: "Ongoing"
