@@ -3,29 +3,71 @@ title:
 description: Milap Rajgor is a mathematics PhD researcher working across topology, scientific computing, and biological structure.
 body_class: home
 ---
-<section class="hero shell" aria-labelledby="hero-title">
-  <div class="hero-kicker"><span>Mathematics</span><span>Biological Structure</span><span>Research</span></div>
-  <div class="hero-grid">
-    <div><p class="eyebrow">{{ site.data.profile.role }}</p><h1 id="hero-title">Milap<br>Rajgor<b>.</b></h1><p class="hero-intro">{{ site.data.profile.introduction }}</p>
-      <div class="actions"><a class="button" href="{{ '/research/' | relative_url }}">Explore my research <span>→</span></a><a class="text-link" href="{{ '/contact/' | relative_url }}">Get in touch ↗</a></div>
+<section class="dossier-hero shell" aria-labelledby="hero-title">
+  <div class="hero-meta">
+    <p><span>Field notes</span> Mathematics × Biological structure</p>
+    <p>Topology · Geometry · Dynamics <span aria-hidden="true">↘</span></p>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ site.data.profile.role }}</p>
+      <h1 id="hero-title">Milap<br><span>Rajgor</span></h1>
+      <p class="hero-dek">Mathematics for understanding <strong>structure, dynamics, and biological systems.</strong></p>
+      <div class="actions">
+        <a class="button" href="{{ '/research/' | relative_url }}">View research <span>↗</span></a>
+        <a class="text-link" href="{{ '/about/' | relative_url }}">Profile & approach</a>
+      </div>
     </div>
-    <aside class="hero-aside" aria-label="Research orientation"><div class="orbit" aria-hidden="true"><i></i><i></i><i></i><b></b></div><p class="eyebrow">Working across</p><p class="formula">Topology <b>↔</b> Structure <b>↔</b> Dynamics</p><dl><div><dt>Focus</dt><dd>Mathematical structure</dd></div><div><dt>Context</dt><dd>Biological systems</dd></div><div><dt>Method</dt><dd>Scientific computing</dd></div></dl></aside>
+
+    <aside class="research-card" aria-label="Research coordinates">
+      <div class="card-mark" aria-hidden="true"><span>M</span><span>R</span></div>
+      <p class="eyebrow">Research coordinates</p>
+      <ol>
+        <li><span>01</span><strong>Topological methods</strong><small>Shape, organization, change</small></li>
+        <li><span>02</span><strong>Biological structure</strong><small>Proteins and biomolecular systems</small></li>
+        <li><span>03</span><strong>Scientific computing</strong><small>Reproducible computational evidence</small></li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="hero-strip" aria-label="Research summary">
+    <p><small>Mode</small> PhD research</p>
+    <p><small>Interface</small> Mathematics ↔ Biology</p>
+    <p><small>Method</small> Theory + computation</p>
+    <p><small>Site</small> milap.phd</p>
   </div>
 </section>
 
-<section class="section shell" aria-labelledby="research-title">
-  <div class="section-head"><p class="index">01 / Research</p><div><h2 id="research-title">Questions shaped by<br>structure and change.</h2><p>My interests connect abstract mathematical ideas with concrete scientific questions.</p></div></div>
-  <div class="research-list">{% for item in site.data.research %}<article><span>{{ item.number }}</span><h3>{{ item.title }}</h3><p>{{ item.summary }}</p></article>{% endfor %}</div>
-  <div class="offset-link"><a class="text-link" href="{{ '/research/' | relative_url }}">Research overview →</a></div>
+<section class="focus shell" aria-labelledby="focus-title">
+  <div class="section-intro">
+    <p class="index">01 / Focus</p>
+    <div><h2 id="focus-title">A research practice built around structure.</h2><p>{{ site.data.profile.introduction }}</p></div>
+  </div>
+  <div class="focus-grid">{% for item in site.data.research %}<article><div><span>{{ item.number }}</span><i aria-hidden="true"></i></div><h3>{{ item.title }}</h3><p>{{ item.summary }}</p><a href="{{ '/research/' | relative_url }}">Read theme <span>↗</span></a></article>{% endfor %}</div>
 </section>
 
-<section class="section dark" aria-labelledby="work-title"><div class="shell">
-  <div class="section-head"><p class="index">02 / Work</p><div><h2 id="work-title">Publications &<br>research projects.</h2><p>A clear record of published work and ongoing projects will live here as the site is updated.</p></div></div>
-  {% if site.data.publications.size > 0 or site.data.projects.size > 0 %}<div class="work-list">{% for publication in site.data.publications limit: 3 %}<article><small>Publication</small><div><h3>{{ publication.title }}</h3><p>{{ publication.authors }} · {{ publication.venue }}</p></div></article>{% endfor %}{% for project in site.data.projects limit: 2 %}<article><small>Project</small><div><h3>{{ project.title }}</h3><p>{{ project.summary }}</p></div></article>{% endfor %}</div>{% else %}<div class="empty-feature"><p class="eyebrow">Research record</p><p>Publication and project details are being prepared. No placeholder accomplishments have been inserted.</p></div>{% endif %}
-  <div class="dark-links"><a href="{{ '/publications/' | relative_url }}">All publications →</a><a href="{{ '/research/#projects' | relative_url }}">Research projects →</a></div>
+<section class="program" aria-labelledby="program-title"><div class="shell">
+  <div class="program-head"><p class="index">02 / Research program</p><p>Topology · Geometry · Computation</p></div>
+  <div class="program-statement">
+    <h2 id="program-title">How can mathematical structure clarify the behavior of complex biological systems?</h2>
+    <div><p>I work between abstraction and evidence—using topological and geometric ideas alongside scientific computing to ask precise questions about structure and change.</p><a class="button button-light" href="{{ '/research/' | relative_url }}">Research overview <span>→</span></a></div>
+  </div>
+  <div class="program-axis"><span>Abstract structure</span><i></i><b>↔</b><i></i><span>Scientific evidence</span></div>
 </div></section>
 
-<section class="split shell" aria-label="Teaching and profile"><article><p class="index">03 / Teaching</p><h2>Teaching as part of mathematical practice.</h2><p>Course roles, teaching materials, and mentoring information can be added without changing the layout.</p><a class="text-link" href="{{ '/teaching/' | relative_url }}">Teaching record →</a></article><article><p class="index">04 / Profile</p><blockquote>“Mathematics · Biological Structure · Research”</blockquote><nav><a href="{{ '/about/' | relative_url }}">About</a><a href="{{ '/cv/' | relative_url }}">Curriculum vitae</a>{% if site.data.profile.scholar_url != "" %}<a href="{{ site.data.profile.scholar_url }}">Google Scholar</a>{% endif %}{% if site.data.profile.github_url != "" %}<a href="{{ site.data.profile.github_url }}">GitHub</a>{% endif %}</nav></article></section>
+<section class="practice shell" aria-labelledby="practice-title">
+  <div class="section-intro"><p class="index">03 / Practice</p><div><h2 id="practice-title">Careful claims. Inspectable methods.</h2><p>My approach emphasizes precision, reproducibility, and meaningful connections between mathematical ideas and scientific questions.</p></div></div>
+  <div class="practice-list">
+    <article><span>A</span><h3>Precision</h3><p>State what a method measures, what a result supports, and where uncertainty remains.</p></article>
+    <article><span>B</span><h3>Reproducibility</h3><p>Build computational work that can be inspected, repeated, and extended.</p></article>
+    <article><span>C</span><h3>Connection</h3><p>Use mathematical structure to create productive links across disciplines.</p></article>
+  </div>
+</section>
 
-<section class="closing shell"><p class="eyebrow">milap.phd</p><h2>Interested in a research<br>conversation?</h2><a class="button" href="{{ '/contact/' | relative_url }}">Contact Milap <span>→</span></a></section>
+<section class="record shell" aria-labelledby="record-title">
+  <div><p class="index">04 / Record</p><h2 id="record-title">Work in progress,<br>documented clearly.</h2></div>
+  <div><p>This site is the evolving public record of my research, publications, teaching, and academic materials. Entries are added only when their details are ready to verify.</p><nav><a href="{{ '/publications/' | relative_url }}">Publications <span>↗</span></a><a href="{{ '/teaching/' | relative_url }}">Teaching <span>↗</span></a><a href="{{ '/cv/' | relative_url }}">Curriculum vitae <span>↗</span></a></nav></div>
+</section>
 
+<section class="closing shell"><div><p class="eyebrow">Research & academic contact</p><h2>Start a thoughtful<br>conversation.</h2></div><a class="round-link" href="{{ '/contact/' | relative_url }}"><span>Contact</span><b>↗</b></a></section>
