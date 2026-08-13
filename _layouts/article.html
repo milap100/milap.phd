@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="article">
+  <header class="article-hero">
+    <div class="shell article-hero-inner">
+      <a class="article-back" href="{{ '/articles/' | relative_url }}">← All articles</a>
+      <p class="index">Research note · {{ page.date | date: "%B %-d, %Y" }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="article-dek">{{ page.description }}</p>
+    </div>
+  </header>
+  <div class="article-layout shell">
+    <aside class="article-meta" aria-label="Article details">
+      <p>Written by</p>
+      <strong>Milap Rajgor</strong>
+      <p>Topics</p>
+      <div>{% for topic in page.topics %}<span>{{ topic }}</span>{% endfor %}</div>
+    </aside>
+    <div class="article-prose">{{ content }}</div>
+  </div>
+</article>

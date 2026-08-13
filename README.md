@@ -9,6 +9,7 @@ Personal academic website for Milap Rajgor, built with Jekyll and hosted on GitH
 - `_data/projects.yml` — research projects
 - `_data/teaching.yml` — courses and teaching activities
 - `_data/research.yml` — research themes
+- `_posts/` — dated research articles written in Markdown
 - `about.md` — longer biography
 
 The data files contain commented examples in the format the site expects. For an empty list, delete its `[]` line before adding the first entry. Keep the indentation and use spaces, not tabs.

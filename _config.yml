@@ -7,5 +7,4 @@ permalink: pretty
 defaults:
   - scope: { path: "" }
     values: { layout: default }
-exclude: [AGENTS.md, README.md, Gemfile, Gemfile.lock]
-
+exclude: [AGENTS.md, README.md, Gemfile, Gemfile.lock, vendor]
