@@ -7,7 +7,7 @@ Personal academic website for Milap Rajgor, built with Jekyll and hosted on GitH
 - `_data/profile.yml` — email, affiliation, academic profiles, and CV link
 - `_data/publications.yml` — publication entries
 - `_data/projects.yml` — research projects
-- `_data/teaching.yml` — courses and teaching activities
+- `_data/teaching.yml` — courses, roles, terms, and teaching summaries
 - `_data/research.yml` — research themes
 - `_posts/` — dated research articles written in Markdown
 - `about.md` — longer biography

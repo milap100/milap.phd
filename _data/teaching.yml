@@ -1,8 +1,23 @@
-# Delete the [] line, then add entries using the example below.
-[]
-# - course: "Course title"
-#   role: "Teaching assistant"
-#   institution: "University name"
-#   term: "Fall 2026"
-#   url: ""
+- course: "MATH 123 — Finite Mathematics"
+  role: "Primary instructor"
+  institution: "University of Tennessee"
+  term: "Spring 2026"
+  summary: "Taught matrix algebra, financial mathematics, Gauss–Jordan elimination, linear programming problems, and game theory."
 
+- course: "MATH 123 — Finite Mathematics"
+  role: "Primary instructor"
+  institution: "University of Tennessee"
+  term: "Fall 2025"
+  summary: "Taught matrix algebra, financial mathematics, Gauss–Jordan elimination, linear programming problems, and game theory."
+
+- course: "MATH 125 — Basic Calculus"
+  role: "Teaching assistant"
+  institution: "University of Tennessee"
+  term: "Spring 2025"
+  summary: "Supported the primary instructor and helped students with derivatives, integrals, and maxima–minima problems."
+
+- course: "MATH 119 — College Algebra"
+  role: "Teaching assistant"
+  institution: "University of Tennessee"
+  term: "Fall 2024"
+  summary: "Supported the primary instructor and assisted students with course material."
